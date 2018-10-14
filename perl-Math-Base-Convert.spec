@@ -4,21 +4,30 @@
 #
 Name     : perl-Math-Base-Convert
 Version  : 0.11
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-base-convert-perl/libmath-base-convert-perl_0.11-2.debian.tar.xz
 Summary  : ~
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
-Requires: perl-Math-Base-Convert-license
-Requires: perl-Math-Base-Convert-man
+Requires: perl-Math-Base-Convert-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 NAME
 Math::Base::Convert - very fast base to base conversion
 SYNOPSIS
 As a function
+
+%package dev
+Summary: dev components for the perl-Math-Base-Convert package.
+Group: Development
+Provides: perl-Math-Base-Convert-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Math-Base-Convert package.
+
 
 %package license
 Summary: license components for the perl-Math-Base-Convert package.
@@ -28,19 +37,11 @@ Group: Default
 license components for the perl-Math-Base-Convert package.
 
 
-%package man
-Summary: man components for the perl-Math-Base-Convert package.
-Group: Default
-
-%description man
-man components for the perl-Math-Base-Convert package.
-
-
 %prep
-tar -xf %{SOURCE1}
-cd ..
 %setup -q -n Math-Base-Convert-0.11
-mkdir -p %{_topdir}/BUILD/Math-Base-Convert-0.11/deblicense/
+cd ..
+%setup -q -T -D -n Math-Base-Convert-0.11 -b 1
+mkdir -p deblicense/
 mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Math-Base-Convert-0.11/deblicense/
 
 %build
@@ -65,12 +66,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Math-Base-Convert
-cp deblicense/copyright %{buildroot}/usr/share/doc/perl-Math-Base-Convert/deblicense_copyright
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Math-Base-Convert
+cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Math-Base-Convert/deblicense_copyright
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -79,20 +80,20 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Math/Base/Convert.pm
-/usr/lib/perl5/site_perl/5.26.1/Math/Base/Convert/Bases.pm
-/usr/lib/perl5/site_perl/5.26.1/Math/Base/Convert/Bitmaps.pm
-/usr/lib/perl5/site_perl/5.26.1/Math/Base/Convert/CalcPP.pm
-/usr/lib/perl5/site_perl/5.26.1/Math/Base/Convert/Shortcuts.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Math/Base/Convert.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Math/Base/Convert/Bases.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Math/Base/Convert/Bitmaps.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Math/Base/Convert/CalcPP.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Math/Base/Convert/Shortcuts.pm
 
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-Math-Base-Convert/deblicense_copyright
-
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Math::Base::Convert.3
 /usr/share/man/man3/Math::Base::Convert::Bases.3
 /usr/share/man/man3/Math::Base::Convert::Bitmaps.3
 /usr/share/man/man3/Math::Base::Convert::CalcPP.3
 /usr/share/man/man3/Math::Base::Convert::Shortcuts.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Math-Base-Convert/deblicense_copyright
