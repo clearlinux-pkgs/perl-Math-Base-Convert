@@ -80,11 +80,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1Math/Base/Convert.pm
-/usr/lib/perl5/vendor_perl/5.28.1Math/Base/Convert/Bases.pm
-/usr/lib/perl5/vendor_perl/5.28.1Math/Base/Convert/Bitmaps.pm
-/usr/lib/perl5/vendor_perl/5.28.1Math/Base/Convert/CalcPP.pm
-/usr/lib/perl5/vendor_perl/5.28.1Math/Base/Convert/Shortcuts.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Math/Base/Convert.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Math/Base/Convert/Bases.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Math/Base/Convert/Bitmaps.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Math/Base/Convert/CalcPP.pm
+/usr/lib/perl5/vendor_perl/5.28.1/Math/Base/Convert/Shortcuts.pm
 
 %files dev
 %defattr(-,root,root,-)
