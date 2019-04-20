@@ -4,7 +4,7 @@
 #
 Name     : perl-Math-Base-Convert
 Version  : 0.11
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-base-convert-perl/libmath-base-convert-perl_0.11-2.debian.tar.xz
@@ -24,6 +24,7 @@ As a function
 Summary: dev components for the perl-Math-Base-Convert package.
 Group: Development
 Provides: perl-Math-Base-Convert-devel = %{version}-%{release}
+Requires: perl-Math-Base-Convert = %{version}-%{release}
 
 %description dev
 dev components for the perl-Math-Base-Convert package.
@@ -42,7 +43,7 @@ license components for the perl-Math-Base-Convert package.
 cd ..
 %setup -q -T -D -n Math-Base-Convert-0.11 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Math-Base-Convert-0.11/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Math-Base-Convert-0.11/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
