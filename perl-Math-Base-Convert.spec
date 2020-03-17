@@ -4,7 +4,7 @@
 #
 Name     : perl-Math-Base-Convert
 Version  : 0.11
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-base-convert-perl/libmath-base-convert-perl_0.11-2.debian.tar.xz
@@ -79,7 +79,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Math-Base-Convert
-cp %{_builddir}/Math-Base-Convert-0.11/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Math-Base-Convert/a9cf7b07a3b87ee68fcf59d527c77660dfd112a6
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Math-Base-Convert/a9cf7b07a3b87ee68fcf59d527c77660dfd112a6
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -107,8 +107,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Math/Base/Convert.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Math/Base/Convert/Bases.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Math/Base/Convert/Bitmaps.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Math/Base/Convert/CalcPP.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Math/Base/Convert/Shortcuts.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Math/Base/Convert.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Math/Base/Convert/Bases.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Math/Base/Convert/Bitmaps.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Math/Base/Convert/CalcPP.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Math/Base/Convert/Shortcuts.pm
