@@ -4,7 +4,7 @@
 #
 Name     : perl-Math-Base-Convert
 Version  : 0.11
-Release  : 18
+Release  : 19
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIKER/Math-Base-Convert-0.11.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libm/libmath-base-convert-perl/libmath-base-convert-perl_0.11-2.debian.tar.xz
@@ -107,8 +107,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Math/Base/Convert.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Math/Base/Convert/Bases.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Math/Base/Convert/Bitmaps.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Math/Base/Convert/CalcPP.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Math/Base/Convert/Shortcuts.pm
+/usr/lib/perl5/*
